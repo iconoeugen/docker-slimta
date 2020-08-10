@@ -1,0 +1,19 @@
+# The nodejs container
+version: '3'
+services:
+  slimta:
+    build:
+      context: ./
+      args:
+        - http_proxy=${http_proxy}
+        - https_proxy=${https_proxy}
+        - ftp_proxy=${ftp_proxy}
+        - no_proxy
+    image: iconoeugen/slimta
+    environment:
+      - SMTP_DOMAIN=example.com
+      - SMTP_RELAY_HOST=1.2.3.4
+      - SMTP_RELAY_PORT=25
+    ports:
+      - "2525:2525"
+    user: '100002000:0'
